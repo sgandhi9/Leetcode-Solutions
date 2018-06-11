@@ -1,0 +1,28 @@
+class Solution {
+    public int trap(int[] height) {
+        int trap = 0, left = 0, right = height.length - 1;
+        
+        if(height.length < 3)
+            return 0;
+        
+        while(left < right && height[left] <= height[left + 1])
+            left++;
+        
+        while(left < right && height[right] <= height[right - 1])
+            right--;
+        
+        while(left < right){
+            int l = height[left], r = height[right];
+            
+            if(l <= r){
+                while(left < right && l >= height[++left])
+                    trap += l - height[left];
+            }
+            else{
+                while(left < right && height[--right] <= r)
+                    trap += r - height[right];
+            }
+        }
+        return trap;
+    }
+}
