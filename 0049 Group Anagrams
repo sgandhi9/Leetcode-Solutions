@@ -1,5 +1,8 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
+        if(strs.length == 0 || strs == null)
+            return new ArrayList<List<String>>();
+        
         HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
         int i = 0;
         
