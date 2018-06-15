@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length())
+            return false;
+        
+        char[] str1 = s.toCharArray();
+        char[] str2 = t.toCharArray();
+        int[] alphabet = new int[26];
+        
+        for(int i = 0; i < str1.length; ++i){
+            alphabet[str1[i] - 'a']++ ;
+            alphabet[str2[i] - 'a']-- ;
+        }
+        
+        for(int i : alphabet){
+            if(i != 0)
+                return false;
+        } 
+        return true;
+    }
+}
