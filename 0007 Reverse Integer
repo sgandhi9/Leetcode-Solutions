@@ -1,3 +1,4 @@
+// Method 1
 class Solution {
     public int reverse(int x) {
         int result = 0;
@@ -13,3 +14,20 @@ class Solution {
         return result;
     }
  }
+ 
+ // Method 2
+ 
+ class Solution {
+    public int reverse(int x) {
+        int finalInt = 0;
+        while (x != 0) {
+            int rev = x % 10;
+            x /= 10;
+            if (finalInt > Integer.MAX_VALUE / 10 || finalInt < Integer.MIN_VALUE / 10) {
+                return 0;
+            }
+            finalInt = finalInt * 10 + rev;
+        }
+        return finalInt;
+    }
+}
