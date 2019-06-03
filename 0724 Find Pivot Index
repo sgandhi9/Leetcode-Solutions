@@ -1,0 +1,61 @@
+---------------------------- < Soultion 2 > -----------------------
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int total = Arrays.stream(nums).sum();
+        int left = 0, right = 0;
+        
+        if(nums.length == 0) {
+            return -1;
+        }
+
+        for (int i = 0; i < nums.length; i++) {   
+            if(i == 0) {
+                left = 0;
+                right = total - nums[i];
+            }
+            else if(i == nums.length - 1) {
+                left = total - nums[i];
+                right = 0;
+            }
+            else {
+                left += nums[i - 1];
+                right = total - left - nums[i];
+            }
+            
+            if(left == right) {
+                 return i;
+            }
+        }
+        return -1;
+    }  
+}
+
+---------------------------- < Soultion 1 > -----------------------
+class Solution {
+    public int pivotIndex(int[] nums) {
+        
+        for (int p = 0; p < nums.length; p++) {
+            int pivot = p;
+            int left = 0, right = 0;
+            if(nums.length == 0) {
+                return -1;
+            }
+
+            for(int i = 0; i < pivot; i++) {
+                left += nums[i];
+            }
+               // System.out.println(left);
+
+            for(int i = pivot + 1; i < nums.length; i++) {
+                right += nums[i];
+            }
+               // System.out.println(right);
+
+            if(left == right) {
+                return pivot;
+            }
+        }
+    return -1;
+    }
+        
+}
