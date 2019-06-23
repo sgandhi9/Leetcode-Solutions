@@ -1,0 +1,27 @@
+---------------------------------------- Method 1 (Split, Stringbuilder and reverse method) -------------------------------------
+class Solution {
+    public String reverseWords(String s) {
+        String[] str = s.split(" ");
+        StringBuilder sb = new StringBuilder();
+        
+        for(String sn: str) {
+            sb.append(revString(sn) + " ");   
+        }
+        
+        return sb.toString().trim();
+    }
+    
+    public String revString(String s) {
+        char[] str = s.toCharArray();
+        int i = 0;
+        
+        while(i < str.length / 2) {
+            char temp = str[i];
+            str[i] = str[str.length - 1 - i];
+            str[str.length - 1 - i] = temp;
+            i++;
+        }
+        
+        return String.valueOf(str);
+    }
+}
