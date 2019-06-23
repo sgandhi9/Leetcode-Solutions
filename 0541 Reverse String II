@@ -1,0 +1,47 @@
+----------------------------- Method 1 (Scalable with swap in-place) ------------------------------
+
+class Solution {
+    public String reverseStr(String s, int k) {
+        char[] str = s.toCharArray();
+        
+        for(int i = 0; i < str.length; i += 2 * k) {
+            int j = i, l = Math.min(i + k -1, str.length - 1);
+            revSubString(str, j, l);
+        }
+        
+        return String.valueOf(str);
+    }
+    
+    public char[] revSubString(char[] s, int j, int l) {
+        while(j < l) {
+            char temp = s[j];
+            s[j] = s[l];
+            s[l] = temp;
+            j++; 
+            l--;
+        }
+        
+        return s;
+    }
+}
+
+-------------------------- Method 2 (Swap in-place) --------------------------------------------
+class Solution {
+    public String reverseStr(String s, int k) {
+        char[] str = s.toCharArray();
+        
+        for(int i = 0; i < str.length; i += 2 * k) {
+            int j = i, l = Math.min(i + k -1, str.length - 1);
+        
+            while(j < l) {
+                char temp = str[j];
+                str[j] = str[l];
+                str[l] = temp;
+                j++; 
+                l--;
+            }
+        }
+        
+        return String.valueOf(str);
+    }
+}
