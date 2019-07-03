@@ -6,23 +6,30 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+ 
+ ----------------------------------- Method 1 (Iterative) -------------------------------------------
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if(head == null){
-            return head;
-        }
-        
-        ListNode prev = null;
-        ListNode next;
-        ListNode curr = head;
-        
-        while(curr != null){
-            next = curr.next;
+        ListNode prev = null, curr = head;
+        while(curr != null) {
+            ListNode temp = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = next;
+            curr = temp;    
         }
-        
         return prev;
+    }
+}
+
+------------------------------------- Method 2 (Recurrsion) ------------------------------------------
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head == null || head.next == null)
+            return head;
+        
+        ListNode prev = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return prev; 
     }
 }
