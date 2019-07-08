@@ -1,0 +1,58 @@
+--------------------------------------- Method 1 (Naive Solution - Two Pass) -------------------------------
+class Solution {
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        
+        for (int i = 0; i < prices.length - 1; i++) {
+            for (int j = i + 1; j < prices.length; j++) {
+                int profit = prices[j] - prices[i];
+                
+                if (profit > max)
+                    max = profit;
+            }
+        }
+        
+        return max;
+    }
+}
+
+---------------------------------------- Method 2 (One pass) ------------------------------------------
+class Solution {
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int min  = Integer.MAX_VALUE;
+        
+        for (int i = 0; i < prices.length; i++) {
+            if(prices[i] < min) {
+                min = prices[i];
+            }
+            
+            else if(prices[i] - min > max) {
+                max = prices[i] - min;
+            }
+        }
+        
+        return max;
+    }
+}
+
+----------------------------------------- Method 3 (one pass - adv. for loop) ---------------------
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int min  = Integer.MAX_VALUE;
+        
+        for (int each: prices) {
+            if(each < min) {
+                min = each;
+            }
+            
+            else if(each - min > max) {
+                max = each - min;
+            }
+        }
+        
+        return max;
+    }
+}
