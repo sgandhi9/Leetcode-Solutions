@@ -1,3 +1,35 @@
+-------------------------------------- Method 3 (Iterative) -------------------------------------
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int count = 0;
+        for(char c: S.toCharArray()) {
+            if(J.contains(String.valueOf(c))) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
+-------------------------------------- Mehtod 2 (HashSet)----------------------------------------
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int count = 0;
+        HashSet<Character> charset = new HashSet<>();
+        for(char c: J.toCharArray()) {
+            charset.add(c);
+        }
+        
+        for(char ch : S.toCharArray()) {
+            if(charset.contains(ch)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+-------------------------------------- Method 1 (HashMap) ---------------------------------------
 class Solution {
     public int numJewelsInStones(String J, String S) {
         HashMap <Character, Integer> smap = new HashMap<>();
