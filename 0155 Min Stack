@@ -1,3 +1,4 @@
+----------------------------------------- Method 1 (Using Stack Data Structure)-------------------------------
 class MinStack {
     int min = Integer.MAX_VALUE;
     Stack <Integer> stack = new Stack<Integer>();
@@ -24,3 +25,44 @@ class MinStack {
         return min;      
     }
 }
+----------------------------------------- Method 2 (Using LinkedList Data Structure) ------------------------------
+class MinStack {
+
+    /** initialize your data structure here. */
+    LinkedList<Integer> list;
+    int min = Integer.MAX_VALUE;
+    
+    public MinStack() {
+        list = new LinkedList<>();
+    }
+    
+    public void push(int x) {
+        if(x <= min) {
+            list.addFirst(min);
+            min = x;
+        }
+        list.addFirst(x);
+    }
+    
+    public void pop() {
+        if(list.poll() == min)
+            min = list.poll();
+    }
+    
+    public int top() {
+        return list.peekFirst();
+    }
+    
+    public int getMin() {
+        return min;
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
