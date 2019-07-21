@@ -1,3 +1,4 @@
+----------------------------------------------------- Method 1 (HashMap) -----------------------------------------
 class Solution {
     public int firstUniqChar(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
@@ -18,4 +19,16 @@ class Solution {
         
         return -1;
     }
+}
+
+----------------------------------------------------- Method 2 (String index) ------------------------------------------
+class Solution {
+public int firstUniqChar (String s) {
+    for (int i = 0; i < s.length(); i++) {
+        if (s.indexOf(s.charAt(i)) == s.lastIndexOf(s.charAt(i))) {
+            return i;
+        }
+    }
+    
+    return -1;
 }
